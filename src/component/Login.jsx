@@ -8,7 +8,7 @@ import { authContext } from '../Provider/AuthProvider';
 const Login = () => {
 
     const [display, setDisplay] = useState('')
-    const {logUser, userLogOut} = useContext(authContext)
+    const { logUser, userLogOut, googleSignIn } = useContext(authContext)
 
 
     // collect form data with onSubmit handlers..........
@@ -23,20 +23,30 @@ const Login = () => {
 
 
         //login user function........
-        logUser( email, password)
-        .then(result => {
-            const user = result.user;
-            console.log(user)
-            setDisplay("success Full Login");
-        })
-        .catch(error => {
-            console.error(error.message);
-        })
+        logUser(email, password)
+            .then(result => {
+                const user = result.user;
+                console.log(user)
+                setDisplay("success Full Login");
+            })
+            .catch(error => {
+                console.error(error.message);
+            })
 
         form.reset();
     }
 
-    
+    // social login with google.......
+    const handleGoogleSignIn = () => {
+         googleSignIn()
+         .then(result => {
+            const user = result.user;
+            console.log(user)
+         })
+         .catch(error => console.log(error));
+    };
+
+
 
 
     return (
@@ -70,6 +80,9 @@ const Login = () => {
                         </div>
                         <div className="form-control mt-6">
                             <button className="btn btn-primary">Login</button>
+                        </div>
+                        <div>
+                            <button onClick={handleGoogleSignIn} className="btn btn-ghost">google</button>
                         </div>
                     </Form>
                 </div>

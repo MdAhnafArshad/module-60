@@ -5,7 +5,7 @@ import { authContext } from '../Provider/AuthProvider';
 const Register = () => {
 
 
-    const {user, createUser} = useContext(authContext);
+    const { user, createUser } = useContext(authContext);
     console.log(user);
 
     const handelRegister = event => {
@@ -14,16 +14,16 @@ const Register = () => {
         const name = form.name.value;
         const email = form.email.value;
         const password = form.password.value;
-        console.log( name, email, password);
+        console.log(name, email, password);
 
         createUser(email, password)
-        .then(result => {
-            const logUser = result.user;
-            console.log(logUser);
-        })
-        .catch(error => {
-            console.error(error.message);
-        });
+            .then(result => {
+                const logUser = result.user;
+                console.log(logUser);
+            })
+            .catch(error => {
+                console.error(error.message);
+            });
 
         form.reset()
     }
@@ -60,6 +60,7 @@ const Register = () => {
                         <div className="form-control mt-6">
                             <button className="btn btn-primary">Register</button>
                         </div>
+                        
                     </Form>
                 </div>
             </div>
