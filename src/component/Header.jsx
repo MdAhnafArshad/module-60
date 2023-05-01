@@ -27,7 +27,7 @@ const Header = () => {
             <Link to="/login" className="btn btn-ghost normal-case text-xl">Login</Link>
             <Link to="/register" className="btn btn-ghost normal-case text-xl">Register</Link>
             <Link to="/orders"  className="btn btn-ghost normal-case text-xl">orders</Link>
-            <Link to="/profile" className="btn btn-ghost normal-case text-xl">profile</Link>
+            {user && <Link to="/profile" className="btn btn-ghost normal-case text-xl">profile</Link>}
 
 
             {
